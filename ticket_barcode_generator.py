@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import render_template, request, jsonify, json, jsonify
 from flask_cors import CORS
-from barcode import  generate
-import barcode
-from barcode.writer import ImageWriter
+#from barcode import  generate
+#import barcode
+#from barcode.writer import ImageWriter
 from tinydb import TinyDB, Query
 
 app = Flask(__name__)
