@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template, request, jsonify, json, jsonify
+from flask_cors import CORS
 from barcode import  generate
 import barcode
 from barcode.writer import ImageWriter
@@ -9,6 +10,8 @@ app = Flask(__name__)
 
 db = TinyDB('db.json')
 User = Query()
+
+CORS(app)
 
 #TODO
 #set up swagger
