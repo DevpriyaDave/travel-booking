@@ -1,0 +1,41 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <br/>
+    <div class="form-group">
+      <label><b>Name</b></label>
+      <input type="text" [class.is-invalid]="registerForm.controls['name'].touched && registerForm.controls['name'].invalid"  class="form-control" formControlName="name">
+      <!-- <div *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].hasError('required')" class="alert alert-danger">
+        Please enter a Username
+      </div> -->
+      <small class="text-danger" [class.d-none]="registerForm.controls['name'].untouched || registerForm.controls['name'].valid">Please enter a name</small>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label><b>Username</b></label>
+      <input type="text" [class.is-invalid]="registerForm.controls['username'].touched && registerForm.controls['username'].invalid"  class="form-control" formControlName="username">
+      <!-- <div *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].hasError('required')" class="alert alert-danger">
+        Please enter a Username
+      </div> -->
+      <small class="text-danger" [class.d-none]="registerForm.controls['username'].untouched || registerForm.controls['username'].valid">Please enter a Username</small>
+    </div>
+    <br />
+    <div class="form-group">
+      <label><b>Password</b></label>
+      <input type="password" [class.is-invalid]="registerForm.controls['password'].touched && registerForm.controls['password'].invalid" class="form-control" formControlName="password">
+      <!-- <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')" class="alert alert-danger">
+        Please enter a Password
+      </div> -->
+      <small class="text-danger" [class.d-none]="registerForm.controls['password'].untouched || registerForm.controls['password'].valid">Please enter a Password</small>
+    </div>
+    <br />
+    <div class="form-group">
+      <label><b>Re-enter Password</b></label>
+      <input type="password" [class.is-invalid]="registerForm.controls['reenter_password'].touched && registerForm.controls['reenter_password'].invalid" class="form-control" formControlName="reenter_password">
+      <!-- <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')" class="alert alert-danger">
+        Please enter a Password
+      </div> -->
+      <small class="text-danger" [class.d-none]="registerForm.controls['reenter_password'].untouched || registerForm.controls['reenter_password'].value == registerForm.controls['password'].value">Passwords do not match</small>
+    </div>
+    <button [disabled]="registerForm.invalid || registerForm.controls['reenter_password'].value != registerForm.controls['password'].value" type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>

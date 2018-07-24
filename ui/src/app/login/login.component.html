@@ -1,0 +1,23 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.controls['username'].value, userForm.controls['password'].value)">
+    <br/>
+    <div class="form-group">
+      <label><b>Username</b></label>
+      <input type="text" [class.is-invalid]="userForm.controls['username'].touched && userForm.controls['username'].invalid"  class="form-control" formControlName="username">
+      <!-- <div *ngIf="userForm.controls['username'].touched && userForm.controls['username'].hasError('required')" class="alert alert-danger">
+        Please enter a Username
+      </div> -->
+      <small class="text-danger" [class.d-none]="userForm.controls['username'].untouched || userForm.controls['username'].valid">Please enter a Username</small>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label><b>Password</b></label>
+      <input type="password" [class.is-invalid]="userForm.controls['password'].touched && userForm.controls['password'].invalid" class="form-control" formControlName="password">
+      <!-- <div *ngIf="userForm.controls['password'].touched && userForm.controls['password'].hasError('required')" class="alert alert-danger">
+        Please enter a Password
+      </div> -->
+      <small class="text-danger" [class.d-none]="userForm.controls['password'].untouched || userForm.controls['password'].valid">Please enter a Password</small>
+    </div>
+    <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
