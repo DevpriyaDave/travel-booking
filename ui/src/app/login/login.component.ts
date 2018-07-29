@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {EntryService} from '../entry.service';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(username, password) {
-    console.log(this._entryService.authenticateUser(username, password));
+    this._entryService.authenticateUser(username, password).subscribe((response: HttpResponse<any>) => {
+      console.log(response.status);
+      console.log(response.body);
+    });
   }
 
 }

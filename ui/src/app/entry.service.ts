@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +15,13 @@ export class EntryService {
 
   constructor(private http: HttpClient) { }
 
-  authenticateUser(username, password) {
+  authenticateUser(username, password) : Observable<HttpResponse<any>>{
     console.log(username);
     console.log(password);
     let header: HttpHeaders = new HttpHeaders();
     header.append('Content-type', 'application/json');
     this._loginDetails = {"username": username, "password": password};
-    this.http.post(this._loginURL, this._loginDetails, {headers: header})
-      .subscribe((response: Response) => {
-      console.log(response.headers);
-    });
+    return this.http.post(this._loginURL, this._loginDetails, { observe: 'response' });
   }
 
   registerUser() {
